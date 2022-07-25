@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Kategorie {
     //filename.txt   = Filme/Serien;
     //b.txt
-    private String fileName ="filename.txt";
-    private String name;
+    private final String fileName ="filename.txt";
+    private final String name;
     public ArrayList<Thing> listOfThings = new ArrayList<>();
     public Kategorie(String name) {
         this.name= name;

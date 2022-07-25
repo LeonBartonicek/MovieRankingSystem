@@ -20,19 +20,22 @@ public class Main {
 
         while (onGoing){
             //print
+            /*
             for (int i = 0; i < filme.listOfThings.size(); i++) {
                 System.out.println(filme.listOfThings.get(i).name
                         +" " + filme.listOfThings.get(i).elo);
             }
+            */
             while (inputOnGoing){
 
 
                 System.out.println("How many things do you want to add?");
-                int answer = scanner.nextInt();
+                int howMany = scanner.nextInt();
 
-                for (int i = 0; i < answer; i++) {
+                for (int i = 0; i < howMany; i++) {
                     System.out.println("Enter name of new thing: ");
-                    String name = scanner.nextLine();
+                    String name = scanner.next();
+                    System.out.println("name: "+name);
                     Thing temp = new Thing(name);
                     filme.listOfThings.add(temp);
                     filme.safe();
@@ -55,7 +58,7 @@ public class Main {
                     int b = random.nextInt(filme.listOfThings.size());
                     Thing b1 = filme.listOfThings.get(b);
                     System.out.println("Which one was better? ");
-                    System.out.println(a1.name + " or " + b1.name + " ?    1/2:");
+                    System.out.println(a1.name + " or " + b1.name + " ?");
 
                     boolean wasValidAnswer = false;
                     int answer = 0;
