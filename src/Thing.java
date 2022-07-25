@@ -22,16 +22,8 @@ public class Thing implements Comparable<Thing>{
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getElo() {
         return elo;
-    }
-
-    public void setElo(int elo) {
-        this.elo = elo;
     }
 
     @Override

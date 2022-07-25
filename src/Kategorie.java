@@ -15,9 +15,9 @@ public class Kategorie {
 
     public int longestWordCharCount(){
         int max=0;
-        for(int i=0; i<listOfThings.size(); i++){
-            int len = listOfThings.get(i).getName().length();
-            if (len > max){
+        for (Thing listOfThing : listOfThings) {
+            int len = listOfThing.getName().length();
+            if (len > max) {
                 max = len;
             }
         }
