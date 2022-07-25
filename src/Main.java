@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 public class Main {
@@ -19,21 +20,24 @@ public class Main {
         }
 
         while (onGoing){
-            //print
-            filme.sort();
-            for (int i = 0; i < filme.listOfThings.size(); i++) {
-                Thing currentThing = filme.listOfThings.get(i);
-                String zeile = currentThing.getName();
+            System.out.println("Rangliste anzeigen? Y/N");
+            String ranglisteAnzeigenAntwort = scanner.nextLine();
+            if (!ranglisteAnzeigenAntwort.toUpperCase().equals("N")){
+                //print
+                filme.sort();
+                for (int i = 0; i < filme.listOfThings.size(); i++) {
+                    Thing currentThing = filme.listOfThings.get(i);
+                    String zeile = currentThing.getName();
 
-                int j= currentThing.getName().length();
-                while (j< filme.longestWordCharCount()+2){
-                    zeile += " ";
-                    j++;
+                    int j= currentThing.getName().length();
+                    while (j< filme.longestWordCharCount()+2){
+                        zeile += " ";
+                        j++;
+                    }
+                    zeile += currentThing.getElo();
+                    System.out.println(zeile);
                 }
-                zeile += currentThing.getElo();
-                System.out.println(zeile);
             }
-
             while (inputOnGoing){
 
                 System.out.println("How many things do you want to add?");
@@ -41,7 +45,9 @@ public class Main {
 
                 for (int i = 0; i < howMany; i++) {
                     System.out.println("Enter name of new thing: ");
-                    String name = scanner.next();
+                    scanner.nextLine();
+                    String name = scanner.nextLine();
+
                     System.out.println("name: "+name);
                     Thing temp = new Thing(name);
                     filme.listOfThings.add(temp);
