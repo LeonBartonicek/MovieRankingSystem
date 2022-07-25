@@ -20,14 +20,21 @@ public class Main {
 
         while (onGoing){
             //print
-            /*
+            filme.sort();
             for (int i = 0; i < filme.listOfThings.size(); i++) {
-                System.out.println(filme.listOfThings.get(i).name
-                        +" " + filme.listOfThings.get(i).elo);
-            }
-            */
-            while (inputOnGoing){
+                Thing currentThing = filme.listOfThings.get(i);
+                String zeile = currentThing.getName();
 
+                int j= currentThing.getName().length();
+                while (j< filme.longestWordCharCount()+2){
+                    zeile += " ";
+                    j++;
+                }
+                zeile += currentThing.getElo();
+                System.out.println(zeile);
+            }
+
+            while (inputOnGoing){
 
                 System.out.println("How many things do you want to add?");
                 int howMany = scanner.nextInt();
@@ -58,7 +65,7 @@ public class Main {
                     int b = random.nextInt(filme.listOfThings.size());
                     Thing b1 = filme.listOfThings.get(b);
                     System.out.println("Which one was better? ");
-                    System.out.println(a1.name + " or " + b1.name + " ?");
+                    System.out.println(a1.getName() + " or " + b1.getName() + " ?");
 
                     boolean wasValidAnswer = false;
                     int answer = 0;
@@ -69,11 +76,11 @@ public class Main {
                         }
                     }
                     if (answer == 1){
-                        filme.listOfThings.get(a).elo += 50;
-                        filme.listOfThings.get(b).elo -= 50;
+                        filme.listOfThings.get(a).increaseElo();
+                        filme.listOfThings.get(b).decreaseElo();
                     } else if (answer == 2){
-                        filme.listOfThings.get(b).elo += 50;
-                        filme.listOfThings.get(a).elo -= 50;
+                        filme.listOfThings.get(b).increaseElo();
+                        filme.listOfThings.get(a).decreaseElo();
                     } else{
                         filme.safe();
                         break;

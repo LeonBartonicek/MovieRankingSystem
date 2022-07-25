@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Kategorie {
@@ -10,6 +11,21 @@ public class Kategorie {
     public ArrayList<Thing> listOfThings = new ArrayList<>();
     public Kategorie(String name) {
         this.name= name;
+    }
+
+    public int longestWordCharCount(){
+        int max=0;
+        for(int i=0; i<listOfThings.size(); i++){
+            int len = listOfThings.get(i).getName().length();
+            if (len > max){
+                max = len;
+            }
+        }
+        return max;
+    }
+
+    public void sort(){
+        listOfThings.sort(Comparator.comparing(Thing::getElo).reversed());
     }
 
     public void load() throws IOException {
@@ -32,7 +48,7 @@ public class Kategorie {
         try {
             FileWriter myWriter = new FileWriter(fileName);
             for (Thing thing : listOfThings) {
-                myWriter.write(thing.name + "," + thing.elo + "\n");
+                myWriter.write(thing.getName() + "," + thing.getElo() + "\n");
             }
             //.write("Files in Java might be tricky, but it is fun enough!");
             myWriter.close();
